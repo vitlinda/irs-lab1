@@ -36,7 +36,12 @@ function step()
 		right = MAX_VELOCITY
 	end
 
-	if (light_right) or (light_back) > 0 then
+	if light_right > 0 then
+		left_v = MAX_VELOCITY
+		right_v = -1
+	end
+
+	if light_back > 0 then
 		left_v = MAX_VELOCITY
 		right_v = -1
 	end

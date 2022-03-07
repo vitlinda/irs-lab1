@@ -24,7 +24,7 @@
     <lua_controller id="lua">
       <actuators>
       <!--<differential_steering/> component that manages the wheels -->
-        <differential_steering implementation="default" noise_level="0.0"/>
+        <differential_steering implementation="default" noise_level="0.4"/>
 	<leds implementation="default" medium="leds" />
       </actuators>
       <sensors>
@@ -46,12 +46,20 @@
   <!-- *********************** -->
   <arena size="4, 4, 1" center="0,0,0.5" positional_grid_size="8,8,1">
 
-    <light id="light"
+    <light id="light1"
            position="0,0,0.5"
            orientation="0,0,0"
            color="yellow"
            intensity="1"
            medium="leds"/>
+
+     <light id="light2"
+            position="1,0.6,0.5"
+            orientation="0,0,0"
+            color="yellow"
+            intensity="1"
+            medium="leds"/>
+
 
 <!--     Place the robot in a given precise position -->
 <!--    <foot-bot id="fb">

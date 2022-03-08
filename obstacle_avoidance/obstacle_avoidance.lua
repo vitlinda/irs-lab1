@@ -29,40 +29,43 @@ function step()
 				value = robot.proximity[i].value
 			end
 		end
-		--log("proximity idx: " .. idx .. " value: " .. value)
-
-
 		if value > 0 then
-			if(idx == 1 ) or (idx == 24) then --obstacle in front, turn left or right randomly
-				log("OBSTACLE idx: " .. idx)
-				repeat
-				left_v = robot.random.uniform(-1, MAX_VELOCITY)
-				right_v = robot.random.uniform(-1, MAX_VELOCITY)
-				until not(left_v == right_v)
+			if(idx == 1 ) or (idx == 24) then 
+				log("OBSTACLE FRONT. idx: " .. idx)
+				--repeat
+				--left_v = robot.random.uniform(-10, MAX_VELOCITY)
+				--right_v = robot.random.uniform(-10, MAX_VELOCITY)
+				--until not(left_v == right_v)
+				left_v = -MAX_VELOCITY
+				right_v = -MAX_VELOCITY
+				log("New direction left: " .. left_v .. " right: " .. right_v)
 			end
-			if (idx == 6) or (idx == 7) then --obstacle on the left, turn right
-				log("OBSTACLE idx: " .. idx)
-				left_v = robot.random.uniform(MAX_VELOCITY, 0)
+			if (idx == 6) or (idx == 7) then
+				log("OBSTACLE LEFT. idx: " .. idx)
+				left_v = robot.random.uniform(0,MAX_VELOCITY)
 				right_v = -5
+				log("New direction left: " .. left_v .. " right: " .. right_v)
 			end
-			if (idx == 18) or (idx == 19) then --obstacle on the right, turn left
-				log("OBSTACLE idx: " .. idx)
+			if (idx == 18) or (idx == 19) then
+				log("OBSTACLE RIGHT. idx: " .. idx)
 				left_v = -5
-				right_v = robot.random.uniform(MAX_VELOCITY, 0)
+				right_v = robot.random.uniform(0,MAX_VELOCITY)
+				log("New direction left: " .. left_v .. " right: " .. right_v)
 			end
-			if (idx == 12) or (idx == 13) then --obstacle back, turn left
-				
-				left_v = -5
-				right_v = robot.random.uniform(MAX_VELOCITY, 0)
+			if (idx == 12) or (idx == 13) then
+				log("OBSTACLE BACK. idx: " .. idx)
+				left_v = MAX_VELOCITY
+				right_v = MAX_VELOCITY
+				log("New direction left: " .. left_v .. " right: " .. right_v)
 			end
+
 		else --go around randomly
 			left_v = robot.random.uniform(0,MAX_VELOCITY)
 			right_v = robot.random.uniform(0,MAX_VELOCITY)
 		end
 
 		robot.wheels.set_velocity(left_v,right_v)
-		end
-
+	end
 end
 
 
